@@ -1,0 +1,45 @@
+---
+title: "My homework Plotly"
+author: "Philippe P."
+date: "June 5, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(plotly)
+```
+
+## Cours Project : Population and GDP of 5 countries/entities
+
+**The date is : June 5, 2018**
+
+The graphic plot : 
+
+- The population of each country/entity
+
+- The gross domestic product based on purchasing power parity, abbreviated GDP (PPP). Source : International Monetary Fund 2017
+
+
+```{r }
+data <- data.frame(
+name = c("China","India","EU", "USA","Indonesia"),
+pop = c(1415045928, 1355621800, 511805088, 328286400, 266471000),
+gdp= c(23159107,9459002, 20852702,19390600, 3242771 )
+)
+
+p1 <- plot_ly(data, x=~name, y=~pop) 
+
+p2 <- plot_ly(data, x=~name, y=~gdp)%>%
+layout(
+    title = "Population and GDP in billions"
+    )
+
+subplot(p1, p2) %>% 
+        hide_legend() 
+
+
+```
+
+
+	
